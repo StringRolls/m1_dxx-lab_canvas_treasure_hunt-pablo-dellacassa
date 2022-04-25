@@ -74,7 +74,7 @@ function drawPlayer() {
 
 class Treasure{
    
-    etRandomPosition(){
+    setRandomPosition(){
     let randomX = Math.floor(Math.random()*10)*50
     let randomY = Math.floor(Math.random()*10)*50
     treasureDetails.y = randomY
@@ -112,21 +112,23 @@ playerLeft.src = "./images/character-left.png";
       y:0
   }
 
+
+
 //show images on load
 treasurePlay.setRandomPosition()
-playerDetails.img.onload = () =>context.drawImage(playerDetails.img, 0,0)
-treasure.onload = () =>context.drawImage(treasureDetails.img, treasureDetails.x,treasureDetails.y, 50, 50)
+playerDetails.img.onload = () =>ctx.drawImage(playerDetails.img, 0,0)
+treasure.onload = () =>ctx.drawImage(treasureDetails.img, treasureDetails.x,treasureDetails.y, 50, 50)
 
 
 function drawEverything() {
   drawGrid();
   if ((playerDetails.x === treasureDetails.x) && (playerDetails.y === treasureDetails.y)){
-    context.clearRect(0, 0, context.canvas.width, context.canvas.width);
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.width);
     treasurePlay.setRandomPosition()
     drawEverything()
 } else {
-  context.drawImage(playerDetails.img, playerDetails.x,playerDetails.y)
-  context.drawImage(treasureDetails.img, treasureDetails.x,treasureDetails.y, 50, 50)}
+  ctx.drawImage(playerDetails.img, playerDetails.x,playerDetails.y)
+  ctx.drawImage(treasureDetails.img, treasureDetails.x,treasureDetails.y, 50, 50)}
 }
 
 drawEverything();
@@ -138,22 +140,22 @@ window.addEventListener('keydown', (event) => {
     event.preventDefault();
     switch (event.key) {
         case "ArrowLeft":
-            context.clearRect(0, 0, context.canvas.width, context.canvas.width);
+            ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.width);
             playerPlay.moveLeft();
             drawEverything()
           break;
         case "ArrowUp":
-            context.clearRect(0, 0, context.canvas.width, context.canvas.width);
+            ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.width);
             playerPlay.moveUp();
             drawEverything()
           break;
         case "ArrowRight":
-            context.clearRect(0, 0, context.canvas.width, context.canvas.width);
+            ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.width);
             playerPlay.moveRight();
             drawEverything()
           break;
         case "ArrowDown":
-            context.clearRect(0, 0, context.canvas.width, context.canvas.width);
+            ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.width);
             playerPlay.moveDown();
             drawEverything()
           break;
